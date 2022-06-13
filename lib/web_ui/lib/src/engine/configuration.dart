@@ -124,6 +124,8 @@ class FlutterConfiguration {
     defaultValue: false,
   );
 
+  int get antialias => _js?.antialias ?? 0;
+  int get defalutSampleCount => _js?.defalutSampleCount ?? 1;
   /// The maximum number of overlay surfaces that the CanvasKit renderer will use.
   ///
   /// Overlay surfaces are extra WebGL `<canvas>` elements used to paint on top
@@ -167,6 +169,8 @@ class JsFlutterConfiguration {}
 
 extension JsFlutterConfigurationExtension on JsFlutterConfiguration {
   external String? get canvasKitBaseUrl;
+  external int? get antialias;
+  external int? get defalutSampleCount;
   external bool? get canvasKitForceCpuOnly;
   external bool? get debugShowSemanticsNodes;
 

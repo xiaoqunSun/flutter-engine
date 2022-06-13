@@ -2692,6 +2692,14 @@ class Path extends NativeFieldWrapperClass1 {
   PathMetrics computeMetrics({bool forceClosed = false}) {
     return PathMetrics._(this, forceClosed);
   }
+  Path? strokePath(Paint paint) {
+    return Path();
+  }
+  Float32List getActiveSpans() {
+    return Float32List(0);
+  }
+  void simplify() {
+  }
 }
 
 /// The geometric description of a tangent: the angle at a point.
@@ -5336,6 +5344,9 @@ class Canvas extends NativeFieldWrapperClass1 {
                    int color,
                    double elevation,
                    bool transparentOccluder) native 'Canvas_drawShadow';
+
+  void saveLayerWithFilter(Rect bounds, Paint paint,ImageFilter filter) {
+  }
 }
 
 /// An object representing a sequence of recorded graphical operations.

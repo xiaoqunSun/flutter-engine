@@ -335,4 +335,19 @@ class CkPath extends ManagedSkiaObject<SkPath> implements ui.Path {
     path.setFillType(toSkFillType(_fillType));
     return path;
   }
+
+  @override
+  ui.Path? strokePath(ui.Paint paint) {
+    final CkPaint ckpaint = paint as CkPaint;
+    SkPath path = skiaObject.strokePath( ckpaint.resurrect());
+    return CkPath.fromSkPath(path,_fillType);
+  }
+  @override
+  Float32List getActiveSpans() {
+    return skiaObject.getActiveSpans();
+  }
+  @override
+  void simplify() {
+    skiaObject.simplify();
+  }
 }

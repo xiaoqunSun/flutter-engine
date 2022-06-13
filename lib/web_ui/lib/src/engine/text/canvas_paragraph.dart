@@ -254,6 +254,10 @@ class CanvasParagraph implements ui.Paragraph {
   List<EngineLineMetrics> computeLineMetrics() {
     return lines.map((ParagraphLine line) => line.lineMetrics).toList();
   }
+  @override
+  ui.Path? getPath(int begin,int end) {
+    return null;
+  }
 }
 
 void _positionSpanElement(DomElement element, ParagraphLine line, RangeBox box) {

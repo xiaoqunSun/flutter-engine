@@ -2861,6 +2861,11 @@ class Paragraph extends NativeFieldWrapperClass1 {
     return metrics;
   }
   Float64List _computeLineMetrics() native 'Paragraph_computeLineMetrics';
+
+  Path? getPath(int begin,int end ) {
+    final Path path = Path._();
+    return path;
+  }
 }
 
 /// Builds a [Paragraph] containing text with the given styling information.

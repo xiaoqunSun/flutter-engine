@@ -33,7 +33,9 @@ class SurfaceCanvas implements ui.Canvas {
   void save() {
     _canvas.save();
   }
-
+  @override
+  void saveLayerWithFilter(ui.Rect bounds, ui.Paint paint,ui.ImageFilter filter) {
+  }
   @override
   void saveLayer(ui.Rect? bounds, ui.Paint paint) {
     assert(paint != null); // ignore: unnecessary_null_comparison

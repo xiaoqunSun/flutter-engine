@@ -139,6 +139,7 @@ extension CanvasKitExtension on CanvasKit {
     int width,
     int height,
     ColorSpace colorSpace,
+    int sampleCount,
   );
   external SkSurface MakeSWCanvasSurface(DomCanvasElement canvas);
 
@@ -1527,6 +1528,12 @@ extension SkPathExtension on SkPath {
   external List<dynamic> toCmds();
 
   external void delete();
+
+  external SkPath strokePath(SkPaint paint);
+
+  external Float32List getActiveSpans();
+
+  external SkPath simplify();
 }
 
 @JS('window.flutterCanvasKit.ContourMeasureIter')
@@ -2163,6 +2170,7 @@ extension SkParagraphExtension on SkParagraph {
   external SkTextRange getWordBoundary(int position);
   external void layout(double width);
   external void delete();
+  external SkPath getPath(int begin,int end);
 }
 
 @JS()
