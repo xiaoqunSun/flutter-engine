@@ -39,7 +39,11 @@ class CanvasKitCanvas implements ui.Canvas {
   void save() {
     _canvas.save();
   }
-
+  @override
+  void saveLayerWithFilter(ui.Rect bounds, ui.Paint paint,ui.ImageFilter filter)
+  {
+    _canvas.saveLayerWithFilter(bounds,filter, paint as CkPaint);
+  }
   @override
   void saveLayer(ui.Rect? bounds, ui.Paint paint) {
     assert(paint != null); // ignore: unnecessary_null_comparison

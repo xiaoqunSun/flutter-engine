@@ -93,6 +93,7 @@ abstract class Canvas {
   }
   void save();
   void saveLayer(Rect? bounds, Paint paint);
+  void saveLayerWithFilter(Rect bounds, Paint paint,ImageFilter filter);
   void restore();
   int getSaveCount();
   void translate(double dx, double dy);

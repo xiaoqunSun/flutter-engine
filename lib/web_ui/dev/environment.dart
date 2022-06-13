@@ -25,6 +25,8 @@ class Environment {
         io.Directory(pathlib.join(engineSrcDir.path, 'out'));
     final io.Directory hostDebugUnoptDir =
         io.Directory(pathlib.join(outDir.path, 'host_debug_unopt'));
+    final io.Directory hostReleaseDir =
+        io.Directory(pathlib.join(outDir.path, 'host_release'));
     final io.Directory dartSdkDir =
         io.Directory(pathlib.join(hostDebugUnoptDir.path, 'dart-sdk'));
     final io.Directory webUiRootDir = io.Directory(
@@ -34,6 +36,7 @@ class Environment {
       engineSrcDir,
       outDir,
       hostDebugUnoptDir,
+      hostReleaseDir,
       dartSdkDir,
       webUiRootDir
     ]) {
@@ -49,6 +52,7 @@ class Environment {
       engineToolsDir: engineToolsDir,
       outDir: outDir,
       hostDebugUnoptDir: hostDebugUnoptDir,
+      hostReleaseDir:hostReleaseDir,
       dartSdkDir: dartSdkDir,
     );
   }
@@ -60,6 +64,7 @@ class Environment {
     required this.engineToolsDir,
     required this.outDir,
     required this.hostDebugUnoptDir,
+    required this.hostReleaseDir,
     required this.dartSdkDir,
   });
 
@@ -82,6 +87,8 @@ class Environment {
 
   /// The "host_debug_unopt" build of the Dart SDK.
   final io.Directory hostDebugUnoptDir;
+
+  final io.Directory hostReleaseDir;
 
   /// The root of the Dart SDK.
   final io.Directory dartSdkDir;
