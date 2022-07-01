@@ -40,8 +40,7 @@ class CanvasKitCanvas implements ui.Canvas {
     _canvas.save();
   }
   @override
-  void saveLayerWithFilter(ui.Rect bounds, ui.Paint paint,ui.ImageFilter filter)
-  {
+  void saveLayerWithFilter(ui.Rect bounds, ui.Paint paint,ui.ImageFilter filter) {
     _canvas.saveLayerWithFilter(bounds,filter, paint as CkPaint);
   }
   @override

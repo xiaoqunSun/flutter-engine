@@ -34,9 +34,7 @@ class SurfaceCanvas implements ui.Canvas {
     _canvas.save();
   }
   @override
-  void saveLayerWithFilter(ui.Rect bounds, ui.Paint paint,ui.ImageFilter filter)
-  {
-    
+  void saveLayerWithFilter(ui.Rect bounds, ui.Paint paint,ui.ImageFilter filter) {
   }
   @override
   void saveLayer(ui.Rect? bounds, ui.Paint paint) {

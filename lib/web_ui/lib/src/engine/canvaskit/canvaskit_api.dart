@@ -1839,6 +1839,7 @@ class SkParagraph {
   external SkTextRange getWordBoundary(int position);
   external void layout(double width);
   external void delete();
+  external SkPath getPath(SkCanvas canvas);
 }
 
 @JS()

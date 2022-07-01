@@ -26,7 +26,7 @@ class BuildCommand extends Command<bool> with ArgUtils<bool> {
       'debug',
       defaultsTo: false,
       help: 'debug mode',
-    );  
+    );
   }
 
   @override

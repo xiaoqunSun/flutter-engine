@@ -10,6 +10,7 @@ import 'canvaskit_api.dart';
 import 'font_fallbacks.dart';
 import 'initialization.dart';
 import 'painting.dart';
+import 'path.dart';
 import 'skia_object_cache.dart';
 import 'util.dart';
 
@@ -790,6 +791,16 @@ class CkParagraph extends SkiaObject<SkParagraph> implements ui.Paragraph {
       result.add(CkLineMetrics._(metric));
     }
     return result;
+  }
+  @override
+  ui.Path? getPath() {
+    final SkParagraph paragraph = _ensureInitialized(_lastLayoutConstraints!);
+    final SkSurface skSurface = canvasKit.MakeSurface(_width as int, _height  as int);
+    final SkCanvas skCanvas = skSurface.getCanvas();
+    final  SkPath p = paragraph.getPath(skCanvas);
+    skSurface.dispose();
+
+    return CkPath.fromSkPath(p, ui.PathFillType.nonZero);
   }
 }
 

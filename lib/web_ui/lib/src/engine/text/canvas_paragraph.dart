@@ -288,6 +288,10 @@ class CanvasParagraph implements EngineParagraph {
   List<EngineLineMetrics> computeLineMetrics() {
     return _layoutService.lines;
   }
+  @override
+  ui.Path? getPath() {
+    return null;
+  }
 }
 
 /// Applies a paragraph [style] to an [element], translating the properties to

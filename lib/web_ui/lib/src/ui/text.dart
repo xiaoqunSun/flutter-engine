@@ -700,6 +700,7 @@ abstract class Paragraph {
   TextRange getLineBoundary(TextPosition position);
   List<TextBox> getBoxesForPlaceholders();
   List<LineMetrics> computeLineMetrics();
+  Path? getPath();
 }
 
 abstract class ParagraphBuilder {
