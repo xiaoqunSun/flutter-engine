@@ -5067,6 +5067,9 @@ class Canvas extends NativeFieldWrapperClass1 {
                    int color,
                    double elevation,
                    bool transparentOccluder) native 'Canvas_drawShadow';
+
+  void saveLayerWithFilter(Rect bounds, Paint paint,ImageFilter filter) {
+  }
 }
 
 /// An object representing a sequence of recorded graphical operations.

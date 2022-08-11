@@ -289,7 +289,7 @@ class CanvasParagraph implements EngineParagraph {
     return _layoutService.lines;
   }
   @override
-  ui.Path? getPath() {
+  ui.Path? getPath(int begin,int end) {
     return null;
   }
 }

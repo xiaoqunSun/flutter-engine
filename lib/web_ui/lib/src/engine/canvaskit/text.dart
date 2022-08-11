@@ -793,12 +793,10 @@ class CkParagraph extends SkiaObject<SkParagraph> implements ui.Paragraph {
     return result;
   }
   @override
-  ui.Path? getPath() {
+  ui.Path? getPath(int begin,int end) {
     final SkParagraph paragraph = _ensureInitialized(_lastLayoutConstraints!);
-    final SkSurface skSurface = canvasKit.MakeSurface(_width as int <= 0 ? 1 : _width as int ,_height as int <= 0 ? 1 : _height as int);
-    final SkCanvas skCanvas = skSurface.getCanvas();
-    final  SkPath p = paragraph.getPath(skCanvas);
-    skSurface.dispose();
+
+    final  SkPath p = paragraph.getPath(begin,end);
 
     return CkPath.fromSkPath(p, ui.PathFillType.nonZero);
   }
