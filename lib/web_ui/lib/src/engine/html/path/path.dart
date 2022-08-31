@@ -1626,6 +1626,10 @@ class SurfacePath implements ui.Path {
       return super.toString();
     }
   }
+  @override
+  ui.Path? strokePath(ui.Paint paint) {
+    return null;
+  }
 }
 
 // Returns Offset if arc is lone point and should be approximated with

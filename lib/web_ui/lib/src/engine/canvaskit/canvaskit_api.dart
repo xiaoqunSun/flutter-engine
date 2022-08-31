@@ -1296,6 +1296,8 @@ class SkPath {
   external List<dynamic> toCmds();
 
   external void delete();
+
+  external SkPath strokePath(SkPaint paint);
 }
 
 @JS('window.flutterCanvasKit.ContourMeasureIter')

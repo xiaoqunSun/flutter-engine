@@ -2651,6 +2651,9 @@ class Path extends NativeFieldWrapperClass1 {
   PathMetrics computeMetrics({bool forceClosed = false}) {
     return PathMetrics._(this, forceClosed);
   }
+  Path? strokePath(Paint paint) {
+    return Path();
+  }
 }
 
 /// The geometric description of a tangent: the angle at a point.
