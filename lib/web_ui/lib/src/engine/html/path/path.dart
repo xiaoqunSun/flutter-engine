@@ -1630,6 +1630,10 @@ class SurfacePath implements ui.Path {
   ui.Path? strokePath(ui.Paint paint) {
     return null;
   }
+   @override
+  Float32List getActiveSpans() {
+    return Float32List(0);
+  }
 }
 
 // Returns Offset if arc is lone point and should be approximated with

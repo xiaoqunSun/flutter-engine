@@ -342,5 +342,9 @@ class CkPath extends ManagedSkiaObject<SkPath> implements ui.Path {
     SkPath path = skiaObject.strokePath( ckpaint.resurrect());
     return CkPath.fromSkPath(path,_fillType);
   }
+  @override
+  Float32List getActiveSpans() {
+    return skiaObject.getActiveSpans();
+  }
 
 }

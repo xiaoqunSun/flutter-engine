@@ -2654,6 +2654,9 @@ class Path extends NativeFieldWrapperClass1 {
   Path? strokePath(Paint paint) {
     return Path();
   }
+  Float32List getActiveSpans() {
+    return Float32List(0);
+  }
 }
 
 /// The geometric description of a tangent: the angle at a point.

@@ -75,4 +75,6 @@ abstract class Path {
   PathMetrics computeMetrics({bool forceClosed = false});
 
   Path? strokePath(Paint paint);
+
+  Float32List getActiveSpans();
 }

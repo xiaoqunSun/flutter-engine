@@ -1298,6 +1298,8 @@ class SkPath {
   external void delete();
 
   external SkPath strokePath(SkPaint paint);
+
+  external Float32List getActiveSpans();
 }
 
 @JS('window.flutterCanvasKit.ContourMeasureIter')
