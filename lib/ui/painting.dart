@@ -2657,6 +2657,8 @@ class Path extends NativeFieldWrapperClass1 {
   Float32List getActiveSpans() {
     return Float32List(0);
   }
+  void simplify() {
+  }
 }
 
 /// The geometric description of a tangent: the angle at a point.

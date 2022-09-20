@@ -1630,9 +1630,12 @@ class SurfacePath implements ui.Path {
   ui.Path? strokePath(ui.Paint paint) {
     return null;
   }
-   @override
+  @override
   Float32List getActiveSpans() {
     return Float32List(0);
+  }
+  @override
+  void simplify() {
   }
 }
 

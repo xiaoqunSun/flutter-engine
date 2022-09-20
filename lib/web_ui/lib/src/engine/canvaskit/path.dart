@@ -346,5 +346,8 @@ class CkPath extends ManagedSkiaObject<SkPath> implements ui.Path {
   Float32List getActiveSpans() {
     return skiaObject.getActiveSpans();
   }
-
+  @override
+  void simplify() {
+    skiaObject.simplify();
+  }
 }

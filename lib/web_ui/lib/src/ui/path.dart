@@ -77,4 +77,6 @@ abstract class Path {
   Path? strokePath(Paint paint);
 
   Float32List getActiveSpans();
+
+  void simplify();
 }
