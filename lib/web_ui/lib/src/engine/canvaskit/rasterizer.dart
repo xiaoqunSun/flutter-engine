@@ -6,6 +6,7 @@ import 'package:meta/meta.dart';
 import 'package:ui/ui.dart' as ui;
 
 import '../frame_reference.dart';
+import '../configuration.dart';
 import 'canvas.dart';
 import 'embedded_views.dart';
 import 'layer_tree.dart';
@@ -30,7 +31,7 @@ class Rasterizer {
       }
 
       final SurfaceFrame frame =
-          SurfaceFactory.instance.baseSurface.acquireFrame(layerTree.frameSize);
+          SurfaceFactory.instance.baseSurface.acquireFrame(layerTree.frameSize,configuration.defalutSampleCount);
       HtmlViewEmbedder.instance.frameSize = layerTree.frameSize;
       final CkCanvas canvas = frame.skiaCanvas;
       final Frame compositorFrame =

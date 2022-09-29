@@ -113,6 +113,7 @@ class CanvasKit {
     int width,
     int height,
     ColorSpace colorSpace,
+    int sampleCount,
   );
   external SkSurface MakeSWCanvasSurface(html.CanvasElement canvas);
 

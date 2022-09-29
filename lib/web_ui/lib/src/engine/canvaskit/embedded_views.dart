@@ -15,6 +15,7 @@ import '../platform_views/slots.dart';
 import '../util.dart';
 import '../vector_math.dart';
 import '../window.dart';
+import '../configuration.dart';
 import 'canvas.dart';
 import 'initialization.dart';
 import 'path.dart';
@@ -449,7 +450,7 @@ class HtmlViewEmbedder {
           // Only draw the picture to the backup surface once.
           if (!_didPaintBackupSurface) {
             final SurfaceFrame backupFrame =
-                SurfaceFactory.instance.backupSurface.acquireFrame(_frameSize);
+                SurfaceFactory.instance.backupSurface.acquireFrame(_frameSize,configuration.defalutSampleCount);
             backupFrame.skiaCanvas
                 .drawPicture(_backupPictureRecorder!.endRecording());
             _backupPictureRecorder = null;
@@ -458,7 +459,7 @@ class HtmlViewEmbedder {
           }
         } else {
           final SurfaceFrame frame =
-              _overlays[viewId]!.acquireFrame(_frameSize);
+              _overlays[viewId]!.acquireFrame(_frameSize,configuration.defalutSampleCount);
           final CkCanvas canvas = frame.skiaCanvas;
           canvas.drawPicture(
             _pictureRecorders[viewId]!.endRecording(),
@@ -722,7 +723,7 @@ class HtmlViewEmbedder {
 
     // Try reusing a cached overlay created for another platform view.
     final Surface overlay = SurfaceFactory.instance.getOverlay()!;
-    overlay.createOrUpdateSurface(_frameSize);
+    overlay.createOrUpdateSurface(_frameSize,configuration.defalutSampleCount);
     _overlays[viewId] = overlay;
   }
 

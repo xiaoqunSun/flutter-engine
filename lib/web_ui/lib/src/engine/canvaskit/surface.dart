@@ -112,8 +112,8 @@ class Surface {
   /// Acquire a frame of the given [size] containing a drawable canvas.
   ///
   /// The given [size] is in physical pixels.
-  SurfaceFrame acquireFrame(ui.Size size) {
-    final CkSurface surface = createOrUpdateSurface(size);
+  SurfaceFrame acquireFrame(ui.Size size,int sampleCount) {
+    final CkSurface surface = createOrUpdateSurface(size,sampleCount);
 
     // ignore: prefer_function_declarations_over_variables
     final SubmitCallback submitCallback =
@@ -136,7 +136,7 @@ class Surface {
   double _currentDevicePixelRatio = -1;
 
   /// Creates a <canvas> and SkSurface for the given [size].
-  CkSurface createOrUpdateSurface(ui.Size size) {
+  CkSurface createOrUpdateSurface(ui.Size size,int sampleCount) {
     if (size.isEmpty) {
       throw CanvasKitError('Cannot create surfaces of empty size.');
     }
@@ -182,7 +182,7 @@ class Surface {
 
     _currentSurfaceSize = size;
     _translateCanvas();
-    return _surface = _createNewSurface(size);
+    return _surface = _createNewSurface(size,sampleCount);
   }
 
   /// Sets the CSS size of the canvas so that canvas pixels are 1:1 with device
@@ -324,7 +324,7 @@ class Surface {
     htmlElement.append(htmlCanvas);
   }
 
-  CkSurface _createNewSurface(ui.Size size) {
+  CkSurface _createNewSurface(ui.Size size,int sampleCount) {
     assert(htmlCanvas != null);
     if (webGLVersion == -1) {
       return _makeSoftwareCanvasSurface(
@@ -341,6 +341,7 @@ class Surface {
         size.width.ceil(),
         size.height.ceil(),
         SkColorSpaceSRGB,
+        sampleCount,
       );
 
       if (skSurface == null) {
