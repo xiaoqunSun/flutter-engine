@@ -423,7 +423,7 @@ class HtmlViewEmbedder {
     for (int i = 0; i < _compositionOrder.length; i++) {
       final int viewId = _compositionOrder[i];
       if (_overlays[viewId] != null) {
-        final SurfaceFrame frame = _overlays[viewId]!.acquireFrame(_frameSize);
+        final SurfaceFrame frame = _overlays[viewId]!.acquireFrame(_frameSize,configuration.defalutSampleCount);
         final CkCanvas canvas = frame.skiaCanvas;
         canvas.drawPicture(
           _context.pictureRecorders[pictureRecorderIndex].endRecording(),
@@ -670,7 +670,7 @@ class HtmlViewEmbedder {
 
     // Try reusing a cached overlay created for another platform view.
     final Surface overlay = SurfaceFactory.instance.getOverlay()!;
-    overlay.createOrUpdateSurface(_frameSize);
+    overlay.createOrUpdateSurface(_frameSize,configuration.defalutSampleCount);
     _overlays[viewId] = overlay;
   }
 

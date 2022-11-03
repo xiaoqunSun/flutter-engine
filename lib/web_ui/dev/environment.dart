@@ -27,6 +27,11 @@ class Environment {
         io.Directory(pathlib.join(outDir.path, 'host_debug_unopt'));
     final io.Directory canvasKitOutDir =
         io.Directory(pathlib.join(outDir.path, 'wasm_debug'));
+    final io.Directory hostReleaseDir =
+        io.Directory(pathlib.join(outDir.path, 'host_release'));
+    final io.Directory canvasKitReleaseOutDir =
+        io.Directory(pathlib.join(outDir.path, 'wasm_release'));
+
     final io.Directory dartSdkDir =
         io.Directory(pathlib.join(hostDebugUnoptDir.path, 'dart-sdk'));
     final io.Directory webUiRootDir = io.Directory(
@@ -52,6 +57,8 @@ class Environment {
       outDir: outDir,
       hostDebugUnoptDir: hostDebugUnoptDir,
       canvasKitOutDir: canvasKitOutDir,
+      hostReleaseDir: hostReleaseDir,
+      canvasKitReleaseOutDir: canvasKitReleaseOutDir,
       dartSdkDir: dartSdkDir,
     );
   }
@@ -63,6 +70,8 @@ class Environment {
     required this.engineToolsDir,
     required this.outDir,
     required this.hostDebugUnoptDir,
+    required this.hostReleaseDir,
+    required this.canvasKitReleaseOutDir,
     required this.canvasKitOutDir,
     required this.dartSdkDir,
   });
@@ -89,6 +98,12 @@ class Environment {
 
   /// The output directory for the build of CanvasKit.
   final io.Directory canvasKitOutDir;
+
+
+  final io.Directory hostReleaseDir;
+
+  final io.Directory canvasKitReleaseOutDir;
+
 
   /// The root of the Dart SDK.
   final io.Directory dartSdkDir;

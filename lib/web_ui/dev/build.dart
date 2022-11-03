@@ -28,6 +28,11 @@ class BuildCommand extends Command<bool> with ArgUtils<bool> {
       help: 'Build CanvasKit locally instead of getting it from CIPD. Disabled '
           'by default.',
     );
+    argParser.addFlag(
+      'debug',
+      defaultsTo: false,
+      help: 'debug mode',
+    );
   }
 
   @override
@@ -37,20 +42,22 @@ class BuildCommand extends Command<bool> with ArgUtils<bool> {
   String get description => 'Build the Flutter web engine.';
 
   bool get isWatchMode => boolArg('watch');
-
+  bool get isDebug => boolArg('debug');
   bool get buildCanvasKit => boolArg('build-canvaskit');
 
   @override
   FutureOr<bool> run() async {
+
+    print('isDebug:${isDebug}');
     final FilePath libPath = FilePath.fromWebUi('lib');
     final List<PipelineStep> steps = <PipelineStep>[
       GnPipelineStep(target: 'engine'),
-      NinjaPipelineStep(target: environment.hostDebugUnoptDir),
+      NinjaPipelineStep(target: isDebug ? environment.hostDebugUnoptDir:environment.hostReleaseDir),
     ];
     if (buildCanvasKit) {
       steps.addAll(<PipelineStep>[
-        GnPipelineStep(target: 'canvaskit'),
-        NinjaPipelineStep(target: environment.canvasKitOutDir),
+        GnPipelineStep(target: 'canvaskit',isDebug:isDebug),
+        NinjaPipelineStep(target: isDebug ? environment.canvasKitOutDir : environment.canvasKitReleaseOutDir),
       ]);
     }
     final Pipeline buildPipeline = Pipeline(steps: steps);
@@ -75,7 +82,7 @@ class BuildCommand extends Command<bool> with ArgUtils<bool> {
 /// Not safe to interrupt as it may leave the `out/` directory in a corrupted
 /// state. GN is pretty quick though, so it's OK to not support interruption.
 class GnPipelineStep extends ProcessStep {
-  GnPipelineStep({this.target = 'engine'})
+  GnPipelineStep({this.target = 'engine',this.isDebug=false})
       : assert(target == 'engine' || target == 'sdk');
 
   @override
@@ -83,6 +90,10 @@ class GnPipelineStep extends ProcessStep {
 
   @override
   bool get isSafeToInterrupt => false;
+
+  bool isDebug = false;
+
+
 
   /// The target to build with gn.
   ///
@@ -92,10 +103,13 @@ class GnPipelineStep extends ProcessStep {
   @override
   Future<ProcessManager> createProcess() {
     print('Running gn...');
+    String arg = '--runtime-mode=release';
+    if(isDebug)
+      arg = '';
     final List<String> gnArgs = <String>[];
     if (target == 'engine') {
       gnArgs.addAll(<String>[
-        '--unopt',
+       arg,
         if (Platform.isMacOS) '--xcode-symlinks',
         '--full-dart-sdk',
       ]);
